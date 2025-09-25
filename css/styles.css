@@ -1,0 +1,366 @@
+/* ISLF Color Scheme - https://coolors.co/palette/897142-af751d-d89327-485867-2f4e6f */
+:root {
+    --primary: #AF751D;       /* Golden brown */
+    --secondary: #485867;     /* Steel blue */
+    --accent: #897142;        /* Warm brown */
+    --highlight: #D89327;     /* Bright gold */
+    --dark: #2F4E6F;         /* Dark blue */
+    --primary-hover: #9d6a1a;
+    --secondary-hover: #3d4a56;
+    --accent-hover: #7a653b;
+    --highlight-hover: #c28623;
+    --dark-hover: #294259;
+}
+
+/* Apply color scheme */
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-accent { color: var(--accent) !important; }
+.text-highlight { color: var(--highlight) !important; }
+.text-dark { color: var(--dark) !important; }
+
+.bg-primary { background-color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+.bg-accent { background-color: var(--accent) !important; }
+.bg-highlight { background-color: var(--highlight) !important; }
+.bg-dark { background-color: var(--dark) !important; }
+
+.bg-primary:hover { background-color: var(--primary-hover) !important; }
+.bg-secondary:hover { background-color: var(--secondary-hover) !important; }
+.bg-accent:hover { background-color: var(--accent-hover) !important; }
+.bg-highlight:hover { background-color: var(--highlight-hover) !important; }
+.bg-dark:hover { background-color: var(--dark-hover) !important; }
+
+.border-primary { border-color: var(--primary) !important; }
+.border-secondary { border-color: var(--secondary) !important; }
+.border-accent { border-color: var(--accent) !important; }
+.border-highlight { border-color: var(--highlight) !important; }
+.border-dark { border-color: var(--dark) !important; }
+
+/* Beautiful gradient background */
+body {
+    background: linear-gradient(135deg, #2F4E6F 0%, #485867 50%, #2F4E6F 100%);
+    min-height: 100vh;
+}
+
+/* Appealing card designs with glassmorphism effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved container styling */
+.main-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced button styles */
+button:not(:disabled) {
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
+button:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+button:not(:disabled):active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Improved table styling */
+.table-container {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead tr {
+    background: linear-gradient(135deg, var(--secondary), var(--dark));
+    color: white;
+}
+
+tbody tr:hover {
+    background: rgba(175, 117, 29, 0.1);
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Video container enhancements */
+#video {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Scan result container */
+#scanResult {
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Loading animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glass-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Video styling - mirrored for better user experience */
+#video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    transform: scaleX(-1); /* Mirror the video horizontally for intuitive QR positioning */
+}
+
+/* Ensure canvas is properly positioned but not mirrored */
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Check mark overlay for successful scan - perfect circle */
+.scan-success-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(175, 117, 29, 0.95);
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 20;
+    box-shadow: 0 6px 30px rgba(175, 117, 29, 0.6);
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scan-success-overlay.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Enhanced scanner frame animations */
+.scanner-frame {
+    animation: scannerPulse 2s ease-in-out infinite;
+}
+
+@keyframes scannerPulse {
+    0%, 100% { 
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+/* Scanning line animation */
+.scanner-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--highlight), transparent);
+    animation: scanLine 2s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(250px); opacity: 0; }
+}
+
+/* Better mobile table styling */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .table-responsive th,
+    .table-responsive td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    /* Hide less important columns on small screens */
+    .hide-mobile {
+        display: none;
+    }
+}
+
+/* Status message animations */
+.status-message {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button hover effects */
+.btn-primary {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(0);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Scan result animations */
+.scan-result {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading spinner for buttons */
+.loading {
+    position: relative;
+    color: transparent;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-color: #ffffff transparent #ffffff transparent;
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar for table */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Enhanced camera permissions message */
+.camera-error {
+    background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+    border: 1px solid #f87171;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Success message styling */
+.success-message {
+    background: linear-gradient(135deg, #f0fdf4 0%, #bbf7d0 100%);
+    border: 1px solid #4ade80;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* QR code format help */
+.format-help {
+    background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%);
+    border: 1px solid #f59e0b;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+/* Improved focus states for accessibility */
+button:focus,
+input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .bg-white {
+        background-color: #374151 !important;
+    }
+    
+    .text-gray-800 {
+        color: #f9fafb !important;
+    }
+    
+    .text-gray-600 {
+        color: #d1d5db !important;
+    }
+    
+    .border-gray-200 {
+        border-color: #4b5563 !important;
+    }
+}
